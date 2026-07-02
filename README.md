@@ -19,9 +19,9 @@ See `mbplumber_spec.md` for the full specification.
   (parser) output, so an **adapter** maps it to the spec's `Hand` schema and
   Modules 2–4 + a CLI run on top.
 - Implemented: adapter, Module 2 (feature extractor), Module 3 (node
-  aggregator), Module 4 (triage analyzer), a `rich` CLI summary, an HTML triage
-  report, and an HTML **decision-node tree explorer**.
-- 151 tests pass.
+  aggregator), Module 4 (triage analyzer), a `rich` CLI summary, and an HTML
+  **decision-node tree explorer**.
+- 169 tests pass.
 
 ## Install & run
 
@@ -31,7 +31,6 @@ python -m mbplumber.cli --data ../PokerData/hands --config config/default.yaml -
 ```
 
 Useful flags:
-- `--html report.html` — write the ranked HTML triage report.
 - `--explorer explorer.html` — write the **decision-node tree explorer**: a
   two-pane page that lets you walk the decision tree (street › IP/OOP › pot type
   › action facing › …, following the active node dimensions) and, at any leaf,

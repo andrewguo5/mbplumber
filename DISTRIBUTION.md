@@ -51,7 +51,7 @@ The install provides an `mbplumber` console command:
 
 ```bash
 # Explicit data path:
-mbplumber --data ~/PokerData/hands --top 25 --html report.html --explorer explorer.html
+mbplumber --data ~/PokerData/hands --top 25 --explorer explorer.html
 
 # Zero-arg: falls back through MBPLUMBER_DATA env var -> config -> ~/PokerData/hands
 mbplumber --top 25

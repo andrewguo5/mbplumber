@@ -20,7 +20,7 @@ the handoff is automatic — you don't wire anything up.
         ▼
   ┌──────────┐  mbhud export   ┌──────────────┐   mbplumber   ┌──────────────────┐
   │  mbHUD    │ ──────────────▶ │  ~/PokerData/ │ ────────────▶ │  mbPlumber screen │
-  │ (tracker) │  JSONL + manifest│  (shared)    │   reads it    │ (report + explorer)│
+  │ (tracker) │  JSONL + manifest│  (shared)    │   reads it    │  (explorer view)  │
   └──────────┘                 └──────────────┘               └──────────────────┘
 ```
 
@@ -85,7 +85,7 @@ mbhud export         # writes ~/PokerData/hands/*.jsonl + manifest.json
 **5. Run mbPlumber.** No paths needed — it defaults to mbHUD's export location:
 
 ```bash
-mbplumber --top 25 --html report.html --explorer explorer.html
+mbplumber --top 25 --explorer explorer.html
 ```
 
 **6. Open the view:**
