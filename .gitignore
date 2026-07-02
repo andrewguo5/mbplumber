@@ -39,6 +39,13 @@ Thumbs.db
 # Agent scratch
 .claude/
 
-# Internal agent session-state docs (not product documentation)
+# Development-process artifacts — kept locally, hidden from the public repo.
+# We show our work locally but don't publish specs, handoffs, coordination
+# docs, issue trackers, or maintainer process notes. Product docs (README,
+# PLAYTESTERS) stay tracked.
 HANDOFF.md
 STRATEGY.md
+mbplumber_spec.md
+COORDINATION_mbHUD.md
+ISSUES.md
+DISTRIBUTION.md

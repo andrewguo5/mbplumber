@@ -10,8 +10,6 @@ for solver study, using two internally-observable signals per decision node:
 **frequency anomalies** and **realized-EV divergence**. It does *not* benchmark
 against GTO — it does the triage; the solver does the confirmation.
 
-See `mbplumber_spec.md` for the full specification.
-
 ## Status
 
 - **Input**: ACR (Americas Cardroom) hand histories in the standardized
