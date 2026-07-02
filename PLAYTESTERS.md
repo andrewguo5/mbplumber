@@ -70,14 +70,7 @@ mbhud start          # flushes, then watches ACR and updates stats live
 
 - Join a table on ACR. Stats update **after each completed hand** (there's always
   a 1-hand delay).
-- When you're done, **stop the tracker** (Ctrl-C), then save what it saw:
-
-```bash
-mbhud flush          # persists the hands from your live session
-```
-
-> ⚠️ Don't skip this flush. The live tracker holds new hands in memory; without
-> the flush they won't reach the mbPlumber screen.
+- When you're done, **stop the tracker** (Ctrl-C)
 
 ---
 
@@ -95,15 +88,11 @@ mbhud export         # writes ~/PokerData/hands/*.jsonl + manifest.json
 mbplumber --top 25 --html report.html --explorer explorer.html
 ```
 
-**6. Open the two views:**
+**6. Open the view:**
 
 ```bash
-open report.html      # ranked triage table — your top candidate leaks
 open explorer.html    # navigable decision-tree explorer
 ```
-
-- **`report.html`** — a ranked list of the decision spots most worth studying,
-  each with flags and a short reason.
 - **`explorer.html`** — the deep view. A collapsible tree
   (street › in-position/out-of-position › pot type › action faced); **every node
   shows its mean realized EV in BB**, so you scan for the red numbers. Click a
@@ -112,13 +101,3 @@ open explorer.html    # navigable decision-tree explorer
   player's action per street, and who won the pot). Lets you reconcile the EV
   against real hands by eye.
 
----
-
-## The order matters
-
-If the mbPlumber screen looks empty or stale, it's almost always the sequence.
-The pipeline is:
-
-```
-mbhud start → (play) → Ctrl-C → mbhud flush → mbhud export → mbplumber
-```
