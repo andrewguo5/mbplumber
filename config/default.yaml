@@ -1,0 +1,51 @@
+# mbPlumber default configuration.
+
+# Input data source (ParsedHand JSONL v2, as exported by mbHUD's `mbhud export`).
+# Resolution precedence, highest first: --data flag > MBPLUMBER_DATA env var >
+# this setting > ~/PokerData/hands (mbHUD's default export location).
+# Leave data_source null to use the fallback ladder; set it to pin a location.
+input:
+  data_source: null          # e.g. ~/PokerData/hands or /path/to/hands
+
+# Dimensions that define a decision node.
+# in_position (IP/OOP, where IP = hero acts last on the flop) replaces the
+# 6-way seat name by default; toggle `position` on below to get seat names.
+node_dimensions: [street, in_position, pot_type, action_facing]
+
+# Optional dimensions — toggle on for finer (but smaller-sample) nodes.
+optional_dimensions:
+  position: false          # 6-way preflop seat name (UTG/MP/CO/BTN/SB/BB)
+  pot_size_bucket: false
+  stack_depth_bucket: false
+  flop_archetype: false
+  board_color: false
+  board_connectedness: false
+  board_paired: false
+  board_top_card: false
+  num_players_in_hand: false
+
+aggregation:
+  bootstrap_min_n: 10        # below this, CI is null + low_confidence
+  bootstrap_resamples: 1000
+  low_sample_threshold: 15   # nodes below this flagged low_sample
+  rng_seed: 42               # reproducible bootstrap
+
+triage:
+  score_weights:
+    a: 0.5   # frequency anomaly
+    b: 0.5   # EV divergence
+  ev_divergence_min_samples_per_action: 15
+  ev_divergence_pctile: 95   # normalization ceiling across nodes
+  prioritize_flagged: true   # rank rule-flagged nodes above unflagged ones
+  street_weights:
+    RIVER: 1.5
+    TURN: 1.3
+    FLOP: 1.1
+  include_low_sample: false
+  flags:
+    river_raise_max_freq: 0.05    # river raise below -> NEAR_ZERO_BLUFF_FREQ
+    fold_to_bet_max_freq: 0.75    # fold above when facing a bet -> HIGH_FOLD_FREQ
+    never_bet_first_to_act: true  # bet freq == 0 at a CHECK node -> NEVER_BET
+
+output:
+  top_n: 25

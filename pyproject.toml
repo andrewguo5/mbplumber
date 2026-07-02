@@ -1,0 +1,42 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mbplumber"
+version = "0.1.0"
+description = "mbPlumber — poker leak triage over the ParsedHand JSONL standard"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Andrew Guo" }]
+keywords = ["poker", "leak-detection", "hand-history", "analysis", "acr"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: End Users/Desktop",
+    "License :: OSI Approved :: MIT License",
+    "Topic :: Games/Entertainment",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+dependencies = [
+    "pydantic>=2",
+    "numpy",
+    "scipy",
+    "PyYAML",
+    "rich",
+]
+
+[project.optional-dependencies]
+dev = ["pytest", "build"]
+
+[project.scripts]
+mbplumber = "mbplumber.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]

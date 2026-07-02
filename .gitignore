@@ -1,0 +1,44 @@
+# Generated analysis artifacts (produced by `mbplumber --html/--explorer`)
+report.html
+explorer.html
+*.html
+
+# Build artifacts
+dist/
+build/
+*.egg-info/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Test / tooling cache
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Agent scratch
+.claude/
+
+# Internal agent session-state docs (not product documentation)
+HANDOFF.md
+STRATEGY.md
