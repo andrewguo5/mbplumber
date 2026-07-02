@@ -42,7 +42,6 @@ def build_parser() -> argparse.ArgumentParser:
     )
     p.add_argument("--config", default=None, help="YAML config (defaults if omitted)")
     p.add_argument("--top", type=int, default=None, help="number of nodes to show")
-    p.add_argument("--html", default=None, help="write an HTML triage report to this path")
     p.add_argument(
         "--explorer",
         default=None,
@@ -96,15 +95,6 @@ def main(argv: list[str] | None = None) -> int:
         f"{s.get('ranked_entries', 0)} ranked "
         f"— [dim]{elapsed:.1f}s[/dim]\n"
     )
-
-    if args.html:
-        from .report_html import render_report
-
-        out = Path(args.html)
-        out.write_text(
-            render_report(result.triage[:top_n], result.stats), encoding="utf-8"
-        )
-        console.print(f"[green]HTML report written:[/green] {out.resolve()}\n")
 
     if args.explorer:
         from .report_explorer import render_explorer
