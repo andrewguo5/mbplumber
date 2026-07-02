@@ -122,27 +122,3 @@ The pipeline is:
 ```
 mbhud start → (play) → Ctrl-C → mbhud flush → mbhud export → mbplumber
 ```
-
----
-
-## What to report back
-
-Please tell us:
-
-1. **Did every command run?** Note the exact command + error if one didn't.
-2. **The mbPlumber screen itself** — this is the main thing we're testing:
-   - Is the ranked report understandable? Do the flagged spots feel like real
-     leaks to you?
-   - Is the explorer tree navigable? Could you drill from a leak down to an
-     individual hand and make sense of it?
-   - Anything confusing, slow, or that you wished were there?
-3. **Any stumbles** in the mbHUD → export → mbPlumber handoff.
-
-### Common stumbles
-
-- **"No active tables detected" / empty stats** → play at least one full hand
-  (the hand history must update), and check the folder you gave `mbhud init`.
-- **mbPlumber screen empty or stale** → you skipped `mbhud flush` (after the live
-  session) or `mbhud export` (before running `mbplumber`). Re-run in order.
-
-Thanks again — your feedback on the mbPlumber screen is exactly what we're after.
